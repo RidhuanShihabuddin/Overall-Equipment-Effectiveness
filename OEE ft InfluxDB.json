@@ -26,12 +26,14 @@
             "902d467bf889457e",
             "47b78cb27a7e2192",
             "d0f5e7df446eca8c",
-            "d5ca6f98228ae123"
+            "d5ca6f98228ae123",
+            "4527ac8b44b38903",
+            "8cdbe30c10f0fb16"
         ],
         "x": 1174,
-        "y": 699,
+        "y": 719,
         "w": 572,
-        "h": 202
+        "h": 282
     },
     {
         "id": "a194111f96f65621",
@@ -69,7 +71,8 @@
             "829f7fce2f88d115",
             "eb884ad0163257b9",
             "8b07e6ef3503b9a0",
-            "93499de1e9f2bdb3"
+            "93499de1e9f2bdb3",
+            "ca7505935cb50332"
         ],
         "x": 2474,
         "y": 99,
@@ -94,8 +97,8 @@
             "986864215eb31ca6",
             "9648ba53d1dd4fc5"
         ],
-        "x": 2054,
-        "y": 99,
+        "x": 1754,
+        "y": 719,
         "w": 392,
         "h": 142
     },
@@ -166,10 +169,10 @@
             "2f65656a9af5723a",
             "00f78af632fa25b7"
         ],
-        "x": 2054,
-        "y": 259,
-        "w": 392,
-        "h": 402
+        "x": 2064,
+        "y": 159,
+        "w": 382,
+        "h": 502
     },
     {
         "id": "3abb0bb16fe54edb",
@@ -256,7 +259,7 @@
             "47402463ace9fa8b"
         ],
         "x": 2474,
-        "y": 1219,
+        "y": 1199,
         "w": 752,
         "h": 242
     },
@@ -272,8 +275,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2360,
-        "y": 200,
+        "x": 2060,
+        "y": 820,
         "wires": [
             []
         ]
@@ -286,7 +289,7 @@
         "name": "Reset ",
         "info": "",
         "x": 1270,
-        "y": 740,
+        "y": 760,
         "wires": []
     },
     {
@@ -345,7 +348,7 @@
         "height": 1,
         "name": "",
         "label": "Availability",
-        "format": "{{msg.payload.available}}",
+        "format": "{{msg.payload.available_percent}}",
         "layout": "row-spread",
         "className": "",
         "x": 3050,
@@ -467,7 +470,7 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "207519d2fb431967",
-        "order": 6,
+        "order": 5,
         "width": 4,
         "height": 1,
         "name": "",
@@ -486,7 +489,7 @@
         "g": "a194111f96f65621",
         "name": "",
         "group": "207519d2fb431967",
-        "order": 8,
+        "order": 7,
         "width": 4,
         "height": 4,
         "gtype": "gage",
@@ -534,7 +537,7 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "207519d2fb431967",
-        "order": 5,
+        "order": 6,
         "width": 4,
         "height": 1,
         "name": "",
@@ -553,7 +556,7 @@
         "g": "a194111f96f65621",
         "name": "",
         "group": "207519d2fb431967",
-        "order": 7,
+        "order": 8,
         "width": 4,
         "height": 4,
         "gtype": "gage",
@@ -580,7 +583,7 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "name": "Information",
-        "func": "var p_id = 1000 + flow.get('total_count')\nvar total_count = flow.get('total_count')\nvar total_ok = flow.get('ok_part')\nvar total_ng = flow.get('ng_part')\nvar ICT = flow.get('ICT')\nvar PPT = flow.get('PPT')\nvar total_downtime = flow.get('total_downtime')\nvar runtime = flow.get('PPT') - flow.get('total_downtime')\n\nmsg.payload = {\n    p_id : p_id,\n    total_count:total_count,\n    total_ok:total_ok,\n    total_ng:total_ng,\n    PPT:PPT,\n    ICT:ICT,\n    total_downtime : total_downtime,\n    runtime:runtime\n}\n\nreturn msg;",
+        "func": "var p_id = 1000 + flow.get('total_count')\nvar total_count = flow.get('total_count')\nvar total_ok = flow.get('ok_part')\nvar total_ng = flow.get('ng_part')\nvar cycle_time = flow.get(\"cycle_time\")\nvar ICT = flow.get('ICT')\nvar PPT = flow.get('PPT')\nvar total_downtime = flow.get('total_downtime')\nvar runtime = flow.get('PPT') - flow.get('total_downtime')\n\nmsg.payload = {\n    p_id : p_id,\n    total_count:total_count,\n    total_ok:total_ok,\n    total_ng:total_ng,\n    cycle_time:cycle_time,\n    PPT:PPT,\n    ICT:ICT,\n    total_downtime : total_downtime,\n    runtime:runtime\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -597,7 +600,8 @@
                 "588f91d26d8657c1",
                 "eb884ad0163257b9",
                 "93499de1e9f2bdb3",
-                "8b07e6ef3503b9a0"
+                "8b07e6ef3503b9a0",
+                "ca7505935cb50332"
             ]
         ]
     },
@@ -607,16 +611,16 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "d33022af62990bc5",
-        "order": 2,
-        "width": 6,
+        "order": 3,
+        "width": "8",
         "height": 1,
         "name": "",
         "label": "Total good",
-        "format": "{{msg.payload.total_ok}}",
+        "format": "{{msg.payload.total_ok}} unit",
         "layout": "row-spread",
         "className": "",
         "x": 3050,
-        "y": 940,
+        "y": 900,
         "wires": []
     },
     {
@@ -625,16 +629,16 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "d33022af62990bc5",
-        "order": 1,
-        "width": 6,
+        "order": 2,
+        "width": "8",
         "height": 1,
         "name": "",
         "label": "Total Count",
-        "format": "{{msg.payload.total_count}}",
+        "format": "{{msg.payload.total_count}} unit",
         "layout": "row-spread",
         "className": "",
         "x": 3050,
-        "y": 900,
+        "y": 860,
         "wires": []
     },
     {
@@ -643,16 +647,16 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "d33022af62990bc5",
-        "order": 3,
-        "width": 6,
+        "order": 4,
+        "width": "8",
         "height": 1,
         "name": "",
         "label": "Total reject",
-        "format": "{{msg.payload.total_ng}}",
+        "format": "{{msg.payload.total_ng}} unit",
         "layout": "row-spread",
         "className": "",
         "x": 3050,
-        "y": 980,
+        "y": 940,
         "wires": []
     },
     {
@@ -661,8 +665,8 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "d33022af62990bc5",
-        "order": 7,
-        "width": 6,
+        "order": 8,
+        "width": "8",
         "height": 1,
         "name": "",
         "label": "Planned Production Time ",
@@ -679,8 +683,8 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "d33022af62990bc5",
-        "order": 8,
-        "width": 6,
+        "order": 9,
+        "width": "8",
         "height": 1,
         "name": "",
         "label": "Ideal Cycle Time",
@@ -718,7 +722,7 @@
         "label": "",
         "group": "d33022af62990bc5",
         "order": 11,
-        "width": 6,
+        "width": "8",
         "height": 1,
         "options": [
             {
@@ -747,8 +751,8 @@
         "topicType": "msg",
         "splitLayout": "",
         "className": "",
-        "x": 2150,
-        "y": 200,
+        "x": 1850,
+        "y": 820,
         "wires": [
             [
                 "ceda711aabe6b988"
@@ -923,7 +927,7 @@
         "z": "4d1efcfcce5f1556",
         "g": "5498e90d6b9c800d",
         "name": "Sensor 3_on(ts)",
-        "func": "var di = msg.payload.onoff; //int\nvar machine = msg.payload.MachineID; //string\nvar signal = msg.payload.signal;//string\nvar datetime = msg.payload.date; // string\nvar ts= msg.payload.timestamp;//int\nvar s3_on = msg.payload.onoff\n\n//retrive counted part---------------------------\nvar cylcle_time;\nvar total_cycle_time;\nvar total_count=flow.get(\"total_count\");\nvar ok_part=flow.get(\"ok_part\");\nvar ng_part=flow.get(\"ng_part\");\n\n\n//retrive timestamp start & sensor 3-----------\nvar motor1_ts = flow.get(\"motor1_ts\");\nvar s3_ts = msg.payload.timestamp;\n\n//retrive sensor signal-----------------------------\nvar s1_on = flow.get(\"s1_on\");\nvar s2_on = flow.get(\"s2_on\");\nvar is_on = flow.get(\"is_on\");\n\n\n\n// Calculate Cycle time ------------------------------    \ncycle_time = s3_ts - motor1_ts;\ncycle_time= cycle_time/1000;        // change milisecond to second\ncycle_time= cycle_time.toFixed(2);  //change to 2 decimal (string)\ncycle_time= parseFloat(cycle_time)\n\ntotal_cycle_time = flow.get(\"total_cycle_time\") + cycle_time;\nflow.set(\"total_cycle_time\",total_cycle_time);  \n\n// Count Total part---------------------------------\nif(s1_on==1 && s3_on==1){\n    total_count++;\n    flow.set(\"total_count\",total_count);\n}\n\n//count ok part-----------------------------------------\nif(s2_on==1 && is_on==0 && s3_on==1){\n    ok_part++\n    flow.set(\"ok_part\",ok_part);\n}\n\n//count ng part-----------------------------------------\nif(s2_on==1 && is_on==1 && s3_on==1){\n    ng_part++\n    flow.set(\"ng_part\",ng_part);\n}\n\n\n\n\n// RESET SENSOR----------------------------------------\nif (s3_on==1){\nflow.set(\"is_on\",0);\nflow.set(\"s1_on\",0);\nflow.set(\"s2_on\",0);\nflow.set(\"s3_on\",0);\n}\n\n\nmsg.payload={\n    s1_on:s1_on,\n    s2_on:s2_on,\n    s3_on:s3_on,\n \n}\n\nreturn msg;\n",
+        "func": "var di = msg.payload.onoff; //int\nvar machine = msg.payload.MachineID; //string\nvar signal = msg.payload.signal;//string\nvar datetime = msg.payload.date; // string\nvar ts= msg.payload.timestamp;//int\nvar s3_on = msg.payload.onoff\n\n//retrive counted part---------------------------\nvar cylcle_time;\nvar total_cycle_time;\nvar total_count=flow.get(\"total_count\");\nvar ok_part=flow.get(\"ok_part\");\nvar ng_part=flow.get(\"ng_part\");\n\n\n//retrive timestamp start & sensor 3-----------\nvar motor1_ts = flow.get(\"motor1_ts\");\nvar s3_ts = msg.payload.timestamp;\n\n//retrive sensor signal-----------------------------\nvar s1_on = flow.get(\"s1_on\");\nvar s2_on = flow.get(\"s2_on\");\nvar is_on = flow.get(\"is_on\");\n\n\n\n// Calculate Cycle time ------------------------------    \ncycle_time = s3_ts - motor1_ts;\ncycle_time= cycle_time/1000;        // change milisecond to second\ncycle_time= cycle_time.toFixed(2);  //change to 2 decimal (string)\ncycle_time= parseFloat(cycle_time);\nflow.set(\"cycle_time\",cycle_time);\n\ntotal_cycle_time = flow.get(\"total_cycle_time\") + cycle_time;\nflow.set(\"total_cycle_time\",total_cycle_time);  \n\n// Count Total part---------------------------------\nif(s1_on==1 && s3_on==1){\n    total_count++;\n    flow.set(\"total_count\",total_count);\n}\n\n//count ok part-----------------------------------------\nif(s2_on==1 && is_on==0 && s3_on==1){\n    ok_part++\n    flow.set(\"ok_part\",ok_part);\n    \n}\n\n//count ng part-----------------------------------------\nif(s2_on==1 && is_on==1 && s3_on==1){\n    ng_part++\n    flow.set(\"ng_part\",ng_part);\n}\n\n\n\n\n// RESET SENSOR----------------------------------------\nif (s3_on==1){\nflow.set(\"is_on\",0);\nflow.set(\"s1_on\",0);\nflow.set(\"s2_on\",0);\nflow.set(\"s3_on\",0);\n}\n\n\nmsg.payload={\n    s1_on:s1_on,\n    s2_on:s2_on,\n    s3_on:s3_on,\n \n}\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1195,7 +1199,7 @@
         "z": "4d1efcfcce5f1556",
         "g": "5498e90d6b9c800d",
         "name": "motor1(ts)",
-        "func": "var motor1 = msg.payload.onoff\n\nif(motor1==1){\n    flow.set(\"motor1\",1);\n \n    \n}\n\n\nreturn msg;\n\n",
+        "func": "var motor1 = msg.payload.onoff;\nvar ts = msg.payload.timestamp;\n\nif(motor1==1){\n    flow.set(\"motor1\",1);\n    flow.set(\"motor1_ts\",ts)\n \n    \n}\n\n\nreturn msg;\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1235,7 +1239,7 @@
         "z": "4d1efcfcce5f1556",
         "g": "5498e90d6b9c800d",
         "name": "E-stop_off(ts)",
-        "func": "var es_off = msg.payload.timestamp;\nvar es_on = flow.get(\"es_on\");\nvar downtime = \"stoped\";\nvar duration;\nvar total_downtime = flow.get(\"total_downtime\");\nvar runtime;\n\nif(total_downtime==undefined){\n    total_downtime=0;               //set initial value\n}\n\nduration= es_off - es_on;\ntotal_downtime = total_downtime+duration;\nflow.set(\"total_downtime\",total_downtime)\nflow.set(\"E-stop_onoff\",msg.payload.onoff);\n\nruntime = flow.get(\"PPT\")-total_downtime;\n\n//duration= duration/1000; // change milisecond to second\n//duration= duration.toFixed(2); //change to 2 decimal (string)\n//duration= parseFloat(duration);// change string to float\n\nreturn msg;",
+        "func": "var es_off = msg.payload.timestamp;\nvar es_on = flow.get(\"es_on\");\nvar downtime = \"stoped\";\nvar duration;\nvar total_downtime = flow.get(\"total_downtime\");\nvar runtime;\n\nif(total_downtime==undefined){\n    total_downtime=0;               //set initial value\n}\n\nduration= es_off - es_on;\ntotal_downtime = total_downtime+duration;\nflow.set(\"total_downtime\",total_downtime)\nflow.set(\"E-stop_onoff\",msg.payload.onoff);\n\nruntime = flow.get(\"PPT\")-total_downtime;\n\nduration= duration/1000; // change milisecond to second\nduration= duration.toFixed(2); //change to 2 decimal (string)\nduration= parseFloat(duration);// change string to float\nflow.set(\"downtime\",duration)\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1278,8 +1282,8 @@
         "g": "b9f644b226ea815c",
         "name": "Key-In Value",
         "info": "",
-        "x": 2150,
-        "y": 140,
+        "x": 1850,
+        "y": 760,
         "wires": []
     },
     {
@@ -1295,7 +1299,7 @@
         "finalize": "",
         "libs": [],
         "x": 1630,
-        "y": 800,
+        "y": 820,
         "wires": [
             []
         ]
@@ -1319,7 +1323,7 @@
         "payload": "0",
         "payloadType": "num",
         "x": 1290,
-        "y": 800,
+        "y": 820,
         "wires": [
             [
                 "d0f5e7df446eca8c"
@@ -1339,7 +1343,7 @@
         "finalize": "",
         "libs": [],
         "x": 1490,
-        "y": 860,
+        "y": 880,
         "wires": [
             []
         ]
@@ -1363,7 +1367,7 @@
         "payload": "0",
         "payloadType": "num",
         "x": 1290,
-        "y": 860,
+        "y": 880,
         "wires": [
             [
                 "902d467bf889457e"
@@ -1377,7 +1381,7 @@
         "g": "006156dbd350cdb1",
         "name": "",
         "group": "d33022af62990bc5",
-        "order": 9,
+        "order": 10,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -1392,7 +1396,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 1450,
-        "y": 800,
+        "y": 820,
         "wires": [
             [
                 "a77deb6fd5282a3a"
@@ -1427,7 +1431,7 @@
         "shape": "circle",
         "showGlow": true,
         "name": "Emergency Stop",
-        "x": 2330,
+        "x": 2340,
         "y": 360,
         "wires": []
     },
@@ -1443,7 +1447,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2140,
+        "x": 2160,
         "y": 360,
         "wires": [
             [
@@ -1474,7 +1478,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2140,
+        "x": 2150,
         "y": 540,
         "wires": [
             [
@@ -1526,7 +1530,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2140,
+        "x": 2150,
         "y": 460,
         "wires": [
             [
@@ -1578,7 +1582,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2140,
+        "x": 2150,
         "y": 620,
         "wires": [
             [
@@ -1592,8 +1596,8 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "d33022af62990bc5",
-        "order": 4,
-        "width": 6,
+        "order": 6,
+        "width": "8",
         "height": 1,
         "name": "",
         "label": "Runtime",
@@ -1650,8 +1654,8 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "d33022af62990bc5",
-        "order": 5,
-        "width": 6,
+        "order": 7,
+        "width": "8",
         "height": 1,
         "name": "Total Downtime",
         "label": "Total Downtime ",
@@ -1668,8 +1672,8 @@
         "z": "4d1efcfcce5f1556",
         "g": "a194111f96f65621",
         "group": "d33022af62990bc5",
-        "order": 10,
-        "width": 6,
+        "order": 1,
+        "width": "8",
         "height": 1,
         "name": "Product ID",
         "label": "Current Product ID",
@@ -1677,7 +1681,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 3050,
-        "y": 860,
+        "y": 820,
         "wires": []
     },
     {
@@ -2718,7 +2722,7 @@
         "shape": "circle",
         "showGlow": true,
         "name": "Motor 1",
-        "x": 2340,
+        "x": 2360,
         "y": 620,
         "wires": []
     },
@@ -2727,15 +2731,15 @@
         "type": "function",
         "z": "4d1efcfcce5f1556",
         "g": "02c4ddeaeb1fad54",
-        "name": "all_events_ridhuan",
+        "name": "OEE_TL",
         "func": "\n\nmsg.payload=[{measurement:\"oee_rid\",\n                fields:{\n                    available:flow.get('available'),\n                    performance:flow.get('performance'),\n                    quality:flow.get('quality'),\n                    oee:flow.get('oee')\n                    \n                    \n                },\n                tags:{\n                    \n                    \n                },\n                \n    \n}\n    \n    ]\n    \n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2750,
-        "y": 1320,
+        "x": 2720,
+        "y": 1300,
         "wires": [
             [
                 "b21135f9b318cf97"
@@ -2757,7 +2761,7 @@
         "org": "organisation",
         "bucket": "bucket",
         "x": 3080,
-        "y": 1320,
+        "y": 1300,
         "wires": []
     },
     {
@@ -2773,7 +2777,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 2570,
-        "y": 1320,
+        "y": 1300,
         "wires": [
             [
                 "31875c507c1261c2"
@@ -2793,7 +2797,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 2570,
-        "y": 1420,
+        "y": 1400,
         "wires": [
             [
                 "4fc2f53aa7ba2961"
@@ -2808,7 +2812,7 @@
         "name": "DELETE MEASUREMENT",
         "info": "",
         "x": 2610,
-        "y": 1380,
+        "y": 1360,
         "wires": []
     },
     {
@@ -2824,7 +2828,7 @@
         "retentionPolicy": "",
         "org": "organisation",
         "x": 3110,
-        "y": 1420,
+        "y": 1400,
         "wires": [
             []
         ]
@@ -2837,7 +2841,7 @@
         "name": "INSERT MEASUREMENT",
         "info": "",
         "x": 2610,
-        "y": 1260,
+        "y": 1240,
         "wires": []
     },
     {
@@ -2847,8 +2851,8 @@
         "g": "f85ff6fdf87c2da9",
         "name": "Input Monitoring",
         "info": "",
-        "x": 2160,
-        "y": 300,
+        "x": 2170,
+        "y": 200,
         "wires": []
     },
     {
@@ -3119,11 +3123,77 @@
         ]
     },
     {
+        "id": "ca7505935cb50332",
+        "type": "ui_text",
+        "z": "4d1efcfcce5f1556",
+        "g": "a194111f96f65621",
+        "group": "d33022af62990bc5",
+        "order": 5,
+        "width": "8",
+        "height": 1,
+        "name": "",
+        "label": "Part Cycle Time",
+        "format": "{{msg.payload.cycle_time}} s",
+        "layout": "row-spread",
+        "className": "",
+        "x": 3060,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "4527ac8b44b38903",
+        "type": "inject",
+        "z": "4d1efcfcce5f1556",
+        "g": "006156dbd350cdb1",
+        "name": "Verify",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "num",
+        "x": 1270,
+        "y": 960,
+        "wires": [
+            [
+                "8cdbe30c10f0fb16"
+            ]
+        ]
+    },
+    {
+        "id": "8cdbe30c10f0fb16",
+        "type": "function",
+        "z": "4d1efcfcce5f1556",
+        "g": "006156dbd350cdb1",
+        "name": "",
+        "func": "if (isNaN(flow.get(\"availability\"))){                   //NaN:Not a Number\n    flow.set(\"availability\",0)\n}\nelse if (flow.get(\"availibility\")==undefined||null){\n    flow.set(\"availability\",0)\n}\nelse {\n     flow.set(\"availability\", flow.get(\"availability\"))\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1480,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "207519d2fb431967",
         "type": "ui_group",
         "name": "OEE",
         "tab": "94549c2c823847b3",
-        "order": 3,
+        "order": 2,
         "disp": true,
         "width": "8",
         "collapse": false,
@@ -3134,9 +3204,9 @@
         "type": "ui_group",
         "name": "Information",
         "tab": "94549c2c823847b3",
-        "order": 2,
+        "order": 4,
         "disp": true,
-        "width": 6,
+        "width": "8",
         "collapse": false,
         "className": ""
     },
@@ -3271,9 +3341,9 @@
         "type": "ui_group",
         "name": "Input Sim",
         "tab": "94549c2c823847b3",
-        "order": 4,
+        "order": 3,
         "disp": true,
-        "width": 8,
+        "width": "8",
         "collapse": false,
         "className": ""
     },
